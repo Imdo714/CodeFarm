@@ -29,14 +29,6 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
 
-    # 2. 현재 작업 디렉토리 확인
-    - name: Print working directory
-      run: pwd
-
-    # 3. gradlew 파일 확인
-    - name: List files in the directory
-      run: ls -al hello
-
     # 3. Gradle 캐시 설정
     - name: Cache Gradle packages
       uses: actions/cache@v3
@@ -48,17 +40,14 @@ jobs:
 
     # 4. Gradle Wrapper 실행 권한 추가
     - name: Set executable permission for gradlew
-      run: chmod +x codeFarm/gradlew
+      run: chmod +x gradlew
 
     # 5. Gradle 빌드 및 테스트 실행
     - name: Build with Gradle
-      run: |
-        cd codeFarm
-        ./gradlew build
+      run: ./gradlew build
 
     # 3. Docker 이미지 빌드
     - name: docker image build
-      working-directory: codeFarm
       run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/codefarm-actions-test .
 
     # 4. DockerHub 로그인
