@@ -35,7 +35,7 @@ jobs:
 
     # 3. gradlew 파일 확인
     - name: List files in the directory
-      run: ls -al hello
+      run: ls -al codeFarm
 
     # 3. Gradle 캐시 설정
     - name: Cache Gradle packages
