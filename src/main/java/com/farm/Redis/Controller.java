@@ -22,6 +22,7 @@ public class Controller {
     public String jwt(@RequestParam String id){
 //        tokenRedisService.getRedis(id);
         tokenRedisService.saveTemplate(id);
+//        tokenRedisService.saveObjectTemplate(id);
         return "Hello!";
     }
 
